@@ -24,6 +24,7 @@ that discourage, exhaust, or otherwise negatively affect other participants.
     * [Nightly releases](#nightly-releases)
     * [API documentation](#api-documentation)
   * [Verifying binaries](#verifying-binaries)
+* [Project structure](#project-structure)
 * [Building Node.js](#building-nodejs)
 * [Security](#security)
 * [Contributing to Node.js](#contributing-to-nodejs)
@@ -115,6 +116,80 @@ curl -fsO "https://nodejs.org/dist/${VERSION}/SHASUMS256.txt.asc" \
 && gpgv --keyring="/path/to/nodejs-keyring.kbx" --output SHASUMS256.txt < SHASUMS256.txt.asc \
 && shasum --check SHASUMS256.txt --ignore-missing
 ```
+
+## Project structure
+
+Node.js project has a well-organized directory structure. Here's an overview of the main directories and their purpose:
+
+### Main directories
+
+* **.github/**: GitHub-specific configuration files and workflows
+* **benchmark/**: Benchmark tests to measure performance
+* **deps/**: External dependencies (V8, libuv, zlib, etc.)
+* **doc/**: Documentation files, including API references
+* **lib/**: JavaScript core modules
+* **src/**: C++ source code for the Node.js runtime
+* **test/**: Test files and fixtures
+* **tools/**: Build tools and utilities
+* **typings/**: TypeScript type definitions
+
+### Detailed directory structure
+
+#### deps/
+Contains all external dependencies that Node.js relies on:
+* **v8/**: Google's V8 JavaScript engine
+* **uv/**: libuv, a cross-platform asynchronous I/O library
+* **zlib/**: Compression library
+* **brotli/**: Brotli compression algorithm
+* **cares/**: C-ARES, a DNS resolver library
+* **llhttp/**: HTTP parser
+* **nghttp2/**: HTTP/2 implementation
+* **ngtcp2/**: TCP/2 implementation
+* **sqlite/**: SQLite database engine
+* **undici/**: HTTP client
+* **uvwasi/**: WebAssembly System Interface implementation
+* **zstd/**: Zstandard compression algorithm
+
+#### doc/
+Comprehensive documentation for Node.js:
+* **api/**: API reference documentation
+* **contributing/**: Guidelines for contributing to Node.js
+* **changelogs/**: Version changelogs
+
+#### lib/
+Core JavaScript modules that form the Node.js API:
+* **internal/**: Internal modules not exposed to users
+* **assert/**: Assertion library
+* **buffer/**: Buffer handling
+* **crypto/**: Cryptographic functions
+* **fs/**: File system operations
+* **http/**: HTTP server and client
+* **net/**: Network operations
+* **stream/**: Stream handling
+* **util/**: Utility functions
+
+#### src/
+C++ implementation of the Node.js runtime:
+* **api/**: API implementation
+* **crypto/**: Cryptographic implementations
+* **quic/**: QUIC protocol implementation
+* **tracing/**: Tracing functionality
+* Various C++ files implementing the core runtime
+
+#### test/
+Test suite for Node.js:
+* **common/**: Common test utilities
+* **fixtures/**: Test fixtures
+* **sea/**: Single Executable Application tests
+* **wasi/**: WebAssembly System Interface tests
+* **wpt/**: Web Platform Tests
+
+#### tools/
+Build and development tools:
+* **doc/**: Documentation tools
+* **gyp/**: GYP build system
+* **icu/**: Internationalization utilities
+* **msvs/**: Microsoft Visual Studio support
 
 ## Building Node.js
 
